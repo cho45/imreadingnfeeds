@@ -1,6 +1,6 @@
 (function imreadingNfeeds ($, Deferred) { with (Deferred) {
 
-var script = (function me (s, l) { l = (l || s.length) - 1; return /blogparts/.test(s[l].src) ? s[l] : me(s, l) })(document.getElementsByTagName("script"));
+var script = (function me (s, l) { l = (l || s.length) - 1; return /imreadingNfeeds/.test(s[l].src) ? s[l] : me(s, l) })(document.getElementsByTagName("script"));
 var params = {}; script.src.match(/#(.+)/)[1].replace(/([^,=]+)=([^,=]+)/g, function (_, key, val) { params[key] = val });
 
 var container = $("<div id='#net.lowreal.imreadingNfeeds'>I'm reading ??? feeds in " + params.domain + ".</div>");
