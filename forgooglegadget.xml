@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+	<ModulePrefs title="I'm reading" />
+	<UserPref name="user" display_name="LDR User ID" datatype="string" required="true"/>
+	<UserPref name="domain" display_name="domain" datatype="string"/>
+	<Content type="html"><![CDATA[
+		<script type="text/javascript">
+			var prefs  = new _IG_Prefs();
+			var params = {
+				user   : prefs.getString("user"),
+				domain : prefs.getString("domain") || "."
+			};
+		</script>
+		<script type="text/javascript" src="http://github.com/cho45/imreadingnfeeds/tree/master%2FimreadingNfeeds.js"></script>
+	]]></Content>
+</Module>
