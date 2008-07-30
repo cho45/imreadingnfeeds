@@ -1,7 +1,10 @@
-(function imreadingXXXfeeds ($, Deferred) { with (Deferred) {
+(function imreadingNfeeds ($, Deferred) { with (Deferred) {
 
 var script = (function me (s, l) { l = (l || s.length) - 1; return /blogparts/.test(s[l].src) ? s[l] : me(s, l) })(document.getElementsByTagName("script"));
 var params = {}; script.src.match(/#(.+)/)[1].replace(/([^,=]+)=([^,=]+)/g, function (_, key, val) { params[key] = val });
+
+var container = $("<div id='#net.lowreal.imreadingNfeeds'>I'm reading ??? feeds in " + params.domain + ".</div>");
+container.insertAfter(script);
 
 wait(0.5).
 next(function () {
@@ -11,7 +14,7 @@ next(function () {
 	//	data     : data.join("&"),
 		success  : function (json) {
 			log(json);
-			$(script).after("I'm reading "+ json.count + " feeds in " + params.domain + ".");
+			container.text("I'm reading "+ json.count + " feeds in " + params.domain + ".");
 		},
 		error : function (e) {
 			alert(e);
